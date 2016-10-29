@@ -14,6 +14,7 @@
 
 @import 'inc/dark-colors';
 @import 'inc/dark-scrollbar'; // not working for some reason :(
+@import 'inc/font-awesome-variables';
 
 * {
 	font-family:                       'Open Sans Condensed', sans-serif !important;
@@ -22,6 +23,12 @@
 body {
 	background-color:                  @default-bg;
 	color:                             @default-txt;
+}
+
+.shadow() {
+	-webkit-box-shadow:                0 0 10px 0 rgba(0, 0, 0, 0.25);
+	-moz-box-shadow:                   0 0 10px 0 rgba(0, 0, 0, 0.25);
+	box-shadow:                        0 0 10px 0 rgba(0, 0, 0, 0.25);
 }
 
 // -- HEADER MENU
@@ -67,9 +74,7 @@ body {
 
 .HeaderMenuLineOuter {
 	background:                        @darkest-bg;
-	-webkit-box-shadow:                0 0 10px 0 rgba(0, 0, 0, 0.25);
-	-moz-box-shadow:                   0 0 10px 0 rgba(0, 0, 0, 0.25);
-	box-shadow:                        0 0 10px 0 rgba(0, 0, 0, 0.25);
+	.shadow();
 }
 
 // -- HEADER
@@ -122,6 +127,7 @@ body {
 		background:                    @lighter-bg;
 
 		.FilterItemContent,
+		.ListIcon,
 		.ProjItemContent {
 			color:                     white;
 		}
@@ -133,12 +139,16 @@ body {
 	font-weight:                       bold;
 
 	.FilterItemContent,
+	.ListIcon,
 	.ProjItemContent {
 		color:                         white;
 	}
 }
 
-#Arrow,
+// list icons in general
+
+.ArrowCollapsed,
+.ArrowExpanded,
 .handle,
 .ListIcon,
 .ListIconAdd,
@@ -146,38 +156,125 @@ body {
 	margin-top:                        6px;
 }
 
-/*
+.ListIcon,
+.ListIconAdd {
+	//background-position:             center center;
+	margin-top:                        7px;
+}
+
+.ArrowCollapsed,
+.ArrowExpanded,
+.IconFrame,
+.ListIcon,
+.ListIconAdd,
+.ProjItemMenu {
+	background:                        none !important;
+
+	&:before {
+		display:                       inline-block;
+		font:                          normal normal normal 14px/1 FontAwesome;
+		font-size:                     14px;
+		text-align:                    center;
+		text-rendering:                auto;
+		width:                         100%;
+		-webkit-font-smoothing:        antialiased;
+	}
+}
+
+.icon(@fn, @fa) {
+	&[style*="icons/@{fn}."]:before {
+		@content:                      "fa-var-@{fa}";
+		content:                       @@content;
+	}
+}
+
+.icon(@fn, @fa, @fa2) {
+	&[style*="icons/@{fn}."]:before {
+		@content:                      "fa-var-@{fa}";
+		content:                       @@content;
+
+		.ProjectSelected & {
+			@content:                 "fa-var-@{fa2}";
+			content:                  @@content;
+		}
+	}
+}
+
+// list icons
+
+.ArrowExpanded:before {
+	content:                           @fa-var-chevron-down;
+}
+
+.ArrowCollapsed:before {
+	content:                           @fa-var-chevron-right;
+}
+
+.ListIconAdd:before {
+	content:                           @fa-var-plus-circle;
+}
+
+.ListIcon {
+	.icon(inbox3,     inbox);
+	.icon(today,      exclamation);
+	.icon(next,       share);
+}
+
+.IconFrame,
+.ListIcon {
+	.icon(alert,      exclamation-triangle);
+	.icon(ball,       futbol-o);
+	.icon(bug,        bug);
+	.icon(cart2,       shopping-cart);
+	.icon(favorite,   star);
+	.icon(film,       film);
+	.icon(Home,       home);
+	.icon(life,       life-ring);
+	.icon(mail,       envelope);
+	.icon(note,       sticky-note);
+	.icon(other,      archive);
+	.icon(page2,      folder,               folder-open);
+	.icon(television, tv);
+	.icon(trash2,     trash);
+	.icon(twitter,    twitter);
+	.icon(warning,    exclamation-circle);
+}
+
+.ProjItemMenu {
+	img {
+		display:                       none;
+	}
+
+	&:before {
+		content:                       @fa-var-bars;
+		margin-left:                   -3px;
+	}
+}
+
+// list count
 
 .ItemIndicator {
-	padding-left: 10px;
-	width: auto;
-}
-
-
-
-
-
-.ListCountTd #ListIcon {
-	background-position:               center center;
+	padding-left:                      10px;
+	width:                             auto;
 }
 
 .ListCount {
-	background: #393d3e;
-	border: none;
-	color: white;
-	font-size: 16px;
-	//margin-top: 3px;
-	//padding: 0px 5px;
-	//width: auto;
-	-webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
-	-moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
-	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+	background:                        @lightest-bg;
+	border:                            none;
+	color:                             white;
+	font-size:                         16px;
+	height:                            auto;
+	//margin-top:                      3px;
+	//padding:                         0px 5px;
+	//width:                           auto;
+	.shadow();
 }
 
-.ListCount {
-	border: none !important;
-	height: auto;
-}
+/*
+
+
+
+
 
 .contextMenu {
 	background: #2c2f30;
@@ -197,40 +294,6 @@ body {
 .contextMenu LI.hover A {
 	background-color: #8C8C8C;
 	color: white;
-}
-#Arrow:before,
-#ListIcon:before {
-	display: inline-block;
-	font: normal normal normal 14px/1 FontAwesome;
-	font-size: 14px;
-	text-align: center;
-	text-rendering: auto;
-	width: 100%;
-	-webkit-font-smoothing: antialiased;
-}
-#ListIcon:before {
-	font-size: 16px;
-}
-#Arrow,
-#ItemId_0 #ListIcon,
-#ItemId_-1 #ListIcon,
-#ItemId_-5 #ListIcon {
-	background: none !important;
-}
-.ArrowExpanded:before {
-	content: "\f078";
-}
-.ArrowCollapsed:before {
-	content: "\f054";
-}
-#ItemId_0 #ListIcon:before {
-	content: "\f01c";
-}
-#ItemId_-1 #ListIcon:before {
-	content: "\f12a";
-}
-#ItemId_-5 #ListIcon:before {
-	content: "\f064";
 }
 
 .ContentAreaTopButtons {

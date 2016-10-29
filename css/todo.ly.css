@@ -125,6 +125,9 @@ body {
 .AddProjectLiDiv:hover .FilterItemContent,
 .BaseFilterLiDiv:hover .FilterItemContent,
 .BaseProjectLiDiv:hover .FilterItemContent,
+.AddProjectLiDiv:hover .ListIcon,
+.BaseFilterLiDiv:hover .ListIcon,
+.BaseProjectLiDiv:hover .ListIcon,
 .AddProjectLiDiv:hover .ProjItemContent,
 .BaseFilterLiDiv:hover .ProjItemContent,
 .BaseProjectLiDiv:hover .ProjItemContent {
@@ -135,48 +138,154 @@ body {
   font-weight: bold;
 }
 .ProjectSelected .FilterItemContent,
+.ProjectSelected .ListIcon,
 .ProjectSelected .ProjItemContent {
   color: white;
 }
-#Arrow,
+.ArrowCollapsed,
+.ArrowExpanded,
 .handle,
 .ListIcon,
 .ListIconAdd,
 .ProjItemMenu {
   margin-top: 6px;
 }
+.ListIcon,
+.ListIconAdd {
+  margin-top: 7px;
+}
+.ArrowCollapsed,
+.ArrowExpanded,
+.IconFrame,
+.ListIcon,
+.ListIconAdd,
+.ProjItemMenu {
+  background: none !important;
+}
+.ArrowCollapsed:before,
+.ArrowExpanded:before,
+.IconFrame:before,
+.ListIcon:before,
+.ListIconAdd:before,
+.ProjItemMenu:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 14px;
+  text-align: center;
+  text-rendering: auto;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+.ArrowExpanded:before {
+  content: "\f078";
+}
+.ArrowCollapsed:before {
+  content: "\f054";
+}
+.ListIconAdd:before {
+  content: "\f055";
+}
+.ListIcon[style*="icons/inbox3."]:before {
+  content: "\f01c";
+}
+.ListIcon[style*="icons/today."]:before {
+  content: "\f12a";
+}
+.ListIcon[style*="icons/next."]:before {
+  content: "\f064";
+}
+.IconFrame[style*="icons/alert."]:before,
+.ListIcon[style*="icons/alert."]:before {
+  content: "\f071";
+}
+.IconFrame[style*="icons/ball."]:before,
+.ListIcon[style*="icons/ball."]:before {
+  content: "\f1e3";
+}
+.IconFrame[style*="icons/bug."]:before,
+.ListIcon[style*="icons/bug."]:before {
+  content: "\f188";
+}
+.IconFrame[style*="icons/cart2."]:before,
+.ListIcon[style*="icons/cart2."]:before {
+  content: "\f07a";
+}
+.IconFrame[style*="icons/favorite."]:before,
+.ListIcon[style*="icons/favorite."]:before {
+  content: "\f005";
+}
+.IconFrame[style*="icons/film."]:before,
+.ListIcon[style*="icons/film."]:before {
+  content: "\f008";
+}
+.IconFrame[style*="icons/Home."]:before,
+.ListIcon[style*="icons/Home."]:before {
+  content: "\f015";
+}
+.IconFrame[style*="icons/life."]:before,
+.ListIcon[style*="icons/life."]:before {
+  content: "\f1cd";
+}
+.IconFrame[style*="icons/mail."]:before,
+.ListIcon[style*="icons/mail."]:before {
+  content: "\f0e0";
+}
+.IconFrame[style*="icons/note."]:before,
+.ListIcon[style*="icons/note."]:before {
+  content: "\f249";
+}
+.IconFrame[style*="icons/other."]:before,
+.ListIcon[style*="icons/other."]:before {
+  content: "\f187";
+}
+.IconFrame[style*="icons/page2."]:before,
+.ListIcon[style*="icons/page2."]:before {
+  content: "\f07b";
+}
+.ProjectSelected .IconFrame[style*="icons/page2."]:before,
+.ProjectSelected .ListIcon[style*="icons/page2."]:before {
+  content: "\f07c";
+}
+.IconFrame[style*="icons/television."]:before,
+.ListIcon[style*="icons/television."]:before {
+  content: "\f26c";
+}
+.IconFrame[style*="icons/trash2."]:before,
+.ListIcon[style*="icons/trash2."]:before {
+  content: "\f1f8";
+}
+.IconFrame[style*="icons/twitter."]:before,
+.ListIcon[style*="icons/twitter."]:before {
+  content: "\f099";
+}
+.IconFrame[style*="icons/warning."]:before,
+.ListIcon[style*="icons/warning."]:before {
+  content: "\f06a";
+}
+.ProjItemMenu img {
+  display: none;
+}
+.ProjItemMenu:before {
+  content: "\f0c9";
+  margin-left: -3px;
+}
+.ItemIndicator {
+  padding-left: 10px;
+  width: auto;
+}
+.ListCount {
+  background: #36393a;
+  border: none;
+  color: white;
+  font-size: 16px;
+  height: auto;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+}
 /*
 
-.ItemIndicator {
-	padding-left: 10px;
-	width: auto;
-}
 
 
 
-
-
-.ListCountTd #ListIcon {
-	background-position:               center center;
-}
-
-.ListCount {
-	background: #393d3e;
-	border: none;
-	color: white;
-	font-size: 16px;
-	//margin-top: 3px;
-	//padding: 0px 5px;
-	//width: auto;
-	-webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
-	-moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
-	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
-}
-
-.ListCount {
-	border: none !important;
-	height: auto;
-}
 
 .contextMenu {
 	background: #2c2f30;
@@ -196,40 +305,6 @@ body {
 .contextMenu LI.hover A {
 	background-color: #8C8C8C;
 	color: white;
-}
-#Arrow:before,
-#ListIcon:before {
-	display: inline-block;
-	font: normal normal normal 14px/1 FontAwesome;
-	font-size: 14px;
-	text-align: center;
-	text-rendering: auto;
-	width: 100%;
-	-webkit-font-smoothing: antialiased;
-}
-#ListIcon:before {
-	font-size: 16px;
-}
-#Arrow,
-#ItemId_0 #ListIcon,
-#ItemId_-1 #ListIcon,
-#ItemId_-5 #ListIcon {
-	background: none !important;
-}
-.ArrowExpanded:before {
-	content: "\f078";
-}
-.ArrowCollapsed:before {
-	content: "\f054";
-}
-#ItemId_0 #ListIcon:before {
-	content: "\f01c";
-}
-#ItemId_-1 #ListIcon:before {
-	content: "\f12a";
-}
-#ItemId_-5 #ListIcon:before {
-	content: "\f064";
 }
 
 .ContentAreaTopButtons {
