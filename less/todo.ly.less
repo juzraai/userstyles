@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+/*
+	------------------------------------------------------
+	Dark theme for todo.ly based on carbon(ite) blue theme
+	By Zsolt Jurányi
+	github.com/juzraai/userstyles
+	juzraai.github.io
+	------------------------------------------------------
+*/
+
+// -- GENERAL
+
+@import 'inc/dark-colors';
+@import 'inc/dark-scrollbar'; // not working for some reason :(
+
+* {
+	font-family:                       'Open Sans Condensed', sans-serif !important;
+}
+
+body {
+	background-color:                  @default-bg;
+	color:                             @default-txt;
+}
+
+// -- HEADER MENU
+
+.HeaderMenuLine,
+.HeaderMenuLineInner,
+.HeaderMenuLineOuter {
+	background:                        none;
+	border:                            none;
+	height:                            auto;
+	margin:                            0px;
+	padding:                           0px;
+}
+
+.HeaderMenuLineInner {
+	a,
+	.highlight2,
+	.inline:first-child:before {
+		background:                    none;
+		border:                        none !important;
+		color:                         @lighter-txt;
+		display:                       inline-block;
+		font-size:                     20px;
+		margin:                        0px;
+		padding:                       10px;
+	}
+
+	a:hover {
+		background:                    @dark-bg;
+		color:                         white;
+	}
+
+	.inline:first-child:before {
+		color:                         white;
+		content:                       'todo.ly';
+		float:                         left;
+	}
+
+	.sep {
+		display:                       none;
+	}
+}
+
+.HeaderMenuLineOuter {
+	background:                        @darkest-bg;
+	-webkit-box-shadow:                0 0 10px 0 rgba(0, 0, 0, 0.25);
+	-moz-box-shadow:                   0 0 10px 0 rgba(0, 0, 0, 0.25);
+	box-shadow:                        0 0 10px 0 rgba(0, 0, 0, 0.25);
+}
+
+// -- HEADER
+
+.HeaderTd:first-child {
+	display:                           none;
+}
+
+// -- LEFT MENU
+
+// titles
+
+.LeftMenuTitle {
+	background:                        none;
+	margin:                            10px 0px;
+	padding:                           0px;
+}
+
+.LeftMenuTitleInner,
+.LeftMenuTitleInnerCollapsed {
+	color:                             @lightest-txt;
+	font-size:                         30px;
+	padding:                           0px 10px;
+
+	&:hover {
+		background:                    @lighter-bg;
+		color:                         white;
+	}
+}
+
+// list elements in general
+
+.AddProjectLiDiv,
+.LiDiv {
+	border:                            none;
+
+	* {
+		color:                         @light-txt;
+	    font-size:                     18px;
+	}
+}
+
+.AddProjectLiDiv,
+.BaseFilterLiDiv,
+.BaseProjectLiDiv {
+	border: none !important;
+	height: auto;
+
+	&:hover {
+		background:                    @lighter-bg;
+
+		.FilterItemContent,
+		.ProjItemContent {
+			color:                     white;
+		}
+	}
+}
+
+.ProjectSelected {
+	background:                        @lighter-bg;
+	font-weight:                       bold;
+
+	.FilterItemContent,
+	.ProjItemContent {
+		color:                         white;
+	}
+}
+
+#Arrow,
+.handle,
+.ListIcon,
+.ListIconAdd,
+.ProjItemMenu {
+	margin-top:                        6px;
+}
+
+/*
+
+.ItemIndicator {
+	padding-left: 10px;
+	width: auto;
+}
+
+
+
+
+
+.ListCountTd #ListIcon {
+	background-position:               center center;
+}
+
+.ListCount {
+	background: #393d3e;
+	border: none;
+	color: white;
+	font-size: 16px;
+	//margin-top: 3px;
+	//padding: 0px 5px;
+	//width: auto;
+	-webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+}
+
+.ListCount {
+	border: none !important;
+	height: auto;
+}
+
+.contextMenu {
+	background: #2c2f30;
+	border-color: #6A6C6D;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+	-o-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+}
+.contextMenu LI.separator {
+	border-top-color: #6A6C6D;
+}
+.contextMenu A {
+	color: #b0b0b0;
+	font-size: 15px;
+}
+.contextMenu LI.hover A {
+	background-color: #8C8C8C;
+	color: white;
+}
+#Arrow:before,
+#ListIcon:before {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: 14px;
+	text-align: center;
+	text-rendering: auto;
+	width: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+#ListIcon:before {
+	font-size: 16px;
+}
+#Arrow,
+#ItemId_0 #ListIcon,
+#ItemId_-1 #ListIcon,
+#ItemId_-5 #ListIcon {
+	background: none !important;
+}
+.ArrowExpanded:before {
+	content: "\f078";
+}
+.ArrowCollapsed:before {
+	content: "\f054";
+}
+#ItemId_0 #ListIcon:before {
+	content: "\f01c";
+}
+#ItemId_-1 #ListIcon:before {
+	content: "\f12a";
+}
+#ItemId_-5 #ListIcon:before {
+	content: "\f064";
+}
+
+.ContentAreaTopButtons {
+	float: none;
+}
+#CurrentProjectTitle {
+	background: none;
+	color: #e3e3e3;
+	font-size: 40px;
+	margin: 20px 0px;
+	padding: 0px;
+}
+*/

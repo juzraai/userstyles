@@ -1,0 +1,11 @@
+{
+	"ignores": ["css", "inc"],
+	"options": {
+		"outputStyle": "normal",
+		"lineComments": false,
+		"debugInfo": false,
+		"strictMath": false,
+		"strictUnits": false,
+        "autoprefix": true
+	}
+}
